@@ -1,0 +1,37 @@
+{
+  "coffees": [
+    {
+      "id": 1,
+      "name": "Cuban",
+      "description": "It's good",
+      "price": "2.99"
+    },
+    {
+      "id": 2,
+      "name": "Nitro Cold Brew",
+      "description": "It's crazy",
+      "price": "4.99"
+    },
+    {
+      "id": 3,
+      "name": "Latte",
+      "description": "It's delicious",
+      "price": "3.99"
+    },
+    {
+        "id": 4,
+        "name": "Expresso",
+        "description": "Yum",
+        "price": "2.99"
+      },
+      {
+        "id": 5,
+        "name": "Cappucino",
+        "description": "milky",
+        "price": "3.99"
+      }
+  ],
+  "pastries": [],
+  "employees": [],
+  "stores": []
+}
