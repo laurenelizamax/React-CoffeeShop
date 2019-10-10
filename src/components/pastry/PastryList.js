@@ -1,44 +1,45 @@
 import React, { Component } from 'react';
-import CoffeeCard from "./CoffeeCard"
-import CoffeeManager from '../modules/CoffeeManager'
-import './CoffeeList.css'
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'; import './CoffeeList.css'
+import PastryCard from "./PastryCard"
+import PastryManager from '../modules/PastryManager'
+import './PastryList.css'
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
-class CoffeeList extends Component {
+
+class PastryList extends Component {
     state = {
-        coffees: [],
+        pastries: [],
         modal: false,
         loadingStatus: false
-    }
 
+    }
     handleFieldChange = evt => {
         const stateToChange = {};
         stateToChange[evt.target.id] = evt.target.value;
         this.setState(stateToChange);
     };
 
-    constructNewCoffee = evt => {
+    constructNewPastry = evt => {
         evt.preventDefault();
-        if (this.state.coffeeName === "" || this.state.description === "" || this.state.price === "") {
-            window.alert("Please input");
+        if (this.state.pastryName === "" || this.state.description === "" || this.state.price === "") {
+            window.alert("Please input a title and due date");
         } else {
             this.setState({ loadingStatus: true });
-            const coffee = {
-                name: this.state.coffeeName,
+            const pastry = {
+                name: this.state.pastryName,
                 description: this.state.description,
                 price: this.state.price
             };
 
-            CoffeeManager.post(coffee)
-                .then(() => this.getData());
+            PastryManager.post (pastry)
+            .then(() => this.getData());
         }
-    };
 
+    };
     getData = () => {
-        CoffeeManager.getAll()
-            .then((coffees) => {
+        PastryManager.getAll()
+            .then((pastries) => {
                 this.setState({
-                    coffees: coffees
+                    pastries: pastries
                 })
             })
     }
@@ -55,20 +56,20 @@ class CoffeeList extends Component {
         return (
             <>
                 <div>
-                    <Button color="info" onClick={this.toggle} >{this.props.buttonLabel} Add Coffee </Button>
+                    <Button color="info" onClick={this.toggle} >{this.props.buttonLabel} Add Pastry </Button>
                     <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-                        <ModalHeader toggle={this.toggle}>Add Coffee</ModalHeader>
+                        <ModalHeader toggle={this.toggle}>Add New Pastry</ModalHeader>
                         <ModalBody>
                             <form>
                                 <fieldset>
-                                    <div className="coffeeForm">
-                                        <label htmlFor="coffeeName">Coffee:</label>
+                                    <div className="pastryForm">
+                                        <label htmlFor="pastryName">Pastry:</label>
                                         <input
                                             type="text"
                                             required
                                             onChange={this.handleFieldChange}
-                                            id="coffeeName"
-                                            placeholder="Coffee"
+                                            id="pastryName"
+                                            placeholder="Pastry"
                                         />
                                         <label htmlFor="description">Description:</label>
                                         <input
@@ -93,28 +94,23 @@ class CoffeeList extends Component {
                         <ModalFooter>
                             <Button color="info" disabled={this.state.loadingStatus}
                                 onClick={(evt) => {
-                                    this.constructNewCoffee(evt)
-                                    this.toggle()
-                                }}>Add Coffee</Button>{' '}
+                                    this.constructNewPastry(evt)
+                                    this.toggle()}}>Add Pastry</Button>{' '}
                             <Button color="success" onClick={this.toggle}>Cancel</Button>
                         </ModalFooter>
                     </Modal>
                 </div>
-                <div>
-                    <h1> Coffee List</h1>
-                    <div className="coffeeList">
-                        {
-                            this.state.coffees.map(coffee =>
-                                <CoffeeCard key={coffee.id}
-                                    coffee={coffee}
-                                    deleteCoffee={this.deleteCoffee}
-                                    {...this.props} />
-                            )
-                        }
-                    </div>
+                <h1> Pastry List</h1>
+                <div className="pastryList">
+                    {this.state.pastries.map(pastry => <PastryCard
+                                                                             key={pastry.id}
+                                                                             pastry={pastry}
+                                                                             deletePastry={this.deletePastry}
+                                                                            {...this.props} />)}
                 </div>
             </>
         )
     }
 }
-export default CoffeeList
+
+export default PastryList

@@ -29,9 +29,40 @@
       "name": "Cappucino",
       "description": "milky",
       "price": "3.99"
+    },
+    {
+      "name": "Mocha",
+      "description": "chocolatey",
+      "price": "4.99",
+      "id": 7
     }
   ],
-  "pastries": [],
+  "pastries": [
+    {
+      "id": 1,
+      "name": "Muffin",
+      "description": "blueberry",
+      "price": "2.99"
+    },
+    {
+      "id": 2,
+      "name": "Cupcake",
+      "description": "strawberry",
+      "price": "3.99"
+    },
+    {
+      "id": 3,
+      "name": "Cookie",
+      "description": "chocolate",
+      "price": "1.99"
+    },
+    {
+      "name": "Croissant",
+      "description": "yummy",
+      "price": "4.99",
+      "id": 4
+    }
+  ],
   "employees": [],
   "stores": []
 }
