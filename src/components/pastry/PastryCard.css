@@ -1,0 +1,26 @@
+@import url("https://fonts.googleapis.com/css?family=Neucha&display=swap");
+
+.pastryCard {
+  width: 30%;
+  font-family: "Neucha", cursive;
+  font-size: 1.2em;
+  margin: 10px 10px 20px 15px;
+  transition: 0.3s;
+    border-radius: 5px; /* 5px rounded corners */
+    background:white;
+    margin-bottom: 2em;
+}
+.pastryBtn {
+  width: 100%;
+  font-family: "Neucha", cursive;
+  font-size: 1em;
+  text-align: center;
+  display: inline-block;
+  background-color: #3A1900 ;
+  color:white ;
+}
+
+  
+  .pastryBtn:hover {
+    background-color:#271507;
+  }
